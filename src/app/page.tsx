@@ -1,69 +1,115 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { Container, Typography, Paper, Box, Button, Stack, Divider } from "@mui/material";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
+export default function AskAccountantLandingPage() {
+  // 🚨 PASTE YOUR STRIPE PAYMENT LINK HERE 🚨
+  const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/YOUR_STRIPE_LINK"; 
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+    <Box
+      sx={{
+        minHeight: "100vh",
+        bgcolor: "#f8fafc",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        py: 8,
+        px: 2,
+      }}
+    >
+      <Container maxWidth="sm">
+        {/* Header / Logo area */}
+        <Box sx={{ textAlign: "center", mb: 5 }}>
+          <Typography variant="h3" sx={{ fontWeight: 800, color: "#0f3d3e", letterSpacing: -1 }}>
+            Ask a UK Accountant
+          </Typography>
+          <Typography variant="h6" sx={{ color: "text.secondary", mt: 1, fontWeight: 400 }}>
+            Clear, professional answers for tradespeople. No retainers. No jargon.
+          </Typography>
+        </Box>
+
+        {/* Main Pricing Card */}
+        <Paper
+          elevation={4}
+          sx={{
+            p: { xs: 3, md: 5 },
+            borderRadius: 4,
+            borderTop: "8px solid #0f3d3e",
+            textAlign: "center",
+            position: "relative",
+          }}
+        >
+          <Typography variant="overline" sx={{ color: "#0f3d3e", fontWeight: 700, letterSpacing: 2 }}>
+            15-Minute Consultation
+          </Typography>
+          
+          <Box sx={{ my: 3 }}>
+            <Typography variant="h2" sx={{ fontWeight: 800, color: "#1e293b" }}>
+              £15
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              One-off payment. No subscription.
+            </Typography>
+          </Box>
+
+          <Divider sx={{ my: 3 }} />
+
+          {/* What's included */}
+          <Stack spacing={2} sx={{ mb: 4, textAlign: "left" }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+              <CheckCircleIcon color="success" />
+              <Typography variant="body1">Speak directly to a UK-qualified accountant.</Typography>
+            </Box>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+              <CheckCircleIcon color="success" />
+              <Typography variant="body1">Get clarity on tax, CIS, or business expenses.</Typography>
+            </Box>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+              <CheckCircleIcon color="success" />
+              <Typography variant="body1">Book a time that suits your schedule immediately.</Typography>
+            </Box>
+          </Stack>
+
+          {/* The Stripe Button */}
+          <Button
+            component="a"
+            href={STRIPE_PAYMENT_LINK}
             target="_blank"
             rel="noopener noreferrer"
+            variant="contained"
+            size="large"
+            fullWidth
+            sx={{
+              bgcolor: "#0f3d3e",
+              "&:hover": { bgcolor: "#082928" },
+              py: 2,
+              fontSize: "1.1rem",
+              fontWeight: 700,
+              borderRadius: 2,
+              boxShadow: "0 4px 14px 0 rgba(15,61,62,0.39)",
+            }}
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            Pay £15 & Book Now →
+          </Button>
+          
+          <Typography variant="caption" display="block" sx={{ mt: 2, color: "text.secondary" }}>
+            Secure payment via Stripe. You will be redirected to choose your appointment time.
+          </Typography>
+        </Paper>
+
+        {/* Footer Trust Signals */}
+        <Box sx={{ mt: 6, textAlign: "center" }}>
+          <Typography variant="body2" color="text.secondary">
+            Powered by FD+ Virtual FD Services.
+          </Typography>
+          <Typography variant="caption" color="text.disabled" sx={{ display: "block", mt: 0.5 }}>
+            Your payment details are processed securely. We do not store your card information.
+          </Typography>
+        </Box>
+      </Container>
+    </Box>
   );
 }
